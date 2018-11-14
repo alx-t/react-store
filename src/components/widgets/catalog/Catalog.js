@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import ProductCard from '~/src/components/widgets/catalog/ProductCard';
 import TextBox from '~/src/components/widgets/catalog/elements/TextBox';
+import Counter from '~/src/components/widgets/catalog/elements/Counter';
 
 import styles from '~/src/components/widgets/catalog/Catalog.css';
 
@@ -21,14 +23,21 @@ export default class Catalog extends Component {
     });
 
     return (
-      <div>
-        <h3>
-          <TextBox>Catalog</TextBox>
-        </h3>
-        <div className='container'>
+      <div className='container'>
+        <div className='header'>
+          <h3>
+            <TextBox>Catalog</TextBox>
+          </h3>
+          <Counter />
+        </div>
+        <div className='content'>
           {productCards}
         </div>
       </div>
     );
   }
 }
+
+Catalog.propTypes = {
+  products: PropTypes.arrayOf(ProductCard.propTypes.product)
+};
