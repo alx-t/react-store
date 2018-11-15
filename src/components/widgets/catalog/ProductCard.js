@@ -17,18 +17,15 @@ export default class ProductCard extends Component {
   }
 
   handleDragStart(e) {
-    const { id, title, price } = this.state.product;
-    e.dataTransfer.setData('id', id);
-    e.dataTransfer.setData('title', title);
-    e.dataTransfer.setData('price', price);
-    console.log('drag start');
+    const product = this.state.product;
+    e.dataTransfer.setData('item', JSON.stringify(product));
   }
 
   render() {
-    const { id, title, price, imageUrl } = this.props.product;
+    const product = this.props.product;
     const image = {
         alt: 'Oops, no image',
-        src: imageUrl,
+        src: product.imageUrl,
         width: 200,
         height: 150
       };
@@ -38,7 +35,7 @@ export default class ProductCard extends Component {
           draggable='true'
           onDragStart={this.handleDragStart}>
         <div className='card-header'>
-          <TextBox>{title}</TextBox>
+          <TextBox>{product.title}</TextBox>
         </div>
         <div className='card-main'>
           <Image
@@ -48,8 +45,8 @@ export default class ProductCard extends Component {
             height={image.height}
           />
           <div className='main-description'>
-            <Price>{price}</Price>
-            <BuyButton item={{ id, title, price }} />
+            <Price>{product.price}</Price>
+            <BuyButton item={product} />
           </div>
         </div>
       </div>

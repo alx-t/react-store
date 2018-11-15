@@ -19,7 +19,7 @@ export default class CatalogPage extends Component {
 
   render() {
     return (
-      <cartContext.Provider value={{ cart: this.state.cart, event: this.addItemClick }}>
+      <cartContext.Provider value={{ cart: this.state.cart, eventAddToCart: this.addItemClick }}>
         <Catalog products={PRODUCTS} />
       </cartContext.Provider>
     );
