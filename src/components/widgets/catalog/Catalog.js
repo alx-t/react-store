@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import ProductCard from '~/src/components/widgets/catalog/ProductCard';
 import TextBox from '~/src/components/widgets/catalog/elements/TextBox';
-import Counter from '~/src/components/widgets/catalog/elements/Counter';
+import Cart from '~/src/components/widgets/catalog/elements/Cart';
 
 import styles from '~/src/components/widgets/catalog/Catalog.css';
 
@@ -28,7 +28,7 @@ export default class Catalog extends Component {
           <h3>
             <TextBox>Catalog</TextBox>
           </h3>
-          <Counter />
+          <Cart />
         </div>
         <div className='content'>
           {productCards}

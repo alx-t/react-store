@@ -11,6 +11,17 @@ import styles from '~/src/components/widgets/catalog/ProductCard.css';
 export default class ProductCard extends Component {
   constructor(props) {
     super(props);
+    this.state = { product: this.props.product }
+
+    this.handleDragStart = this.handleDragStart.bind(this);
+  }
+
+  handleDragStart(e) {
+    const { id, title, price } = this.state.product;
+    e.dataTransfer.setData('id', id);
+    e.dataTransfer.setData('title', title);
+    e.dataTransfer.setData('price', price);
+    console.log('drag start');
   }
 
   render() {
@@ -22,7 +33,10 @@ export default class ProductCard extends Component {
         height: 150
       };
     return (
-      <div className='card'>
+      <div
+          className='card'
+          draggable='true'
+          onDragStart={this.handleDragStart}>
         <div className='card-header'>
           <TextBox>{title}</TextBox>
         </div>
