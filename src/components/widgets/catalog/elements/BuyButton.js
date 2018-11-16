@@ -20,13 +20,13 @@ class BuyButton extends Component {
     return (
       <cartContext.Consumer>
         {
-          ({ cart, eventAddToCart }) => (
+          ({ cart, addToCart }) => (
             <div>
               <input
                 onChange={(e) => this.setField(e)}
                 value={this.state.quantity}
               />
-              <button onClick={() => eventAddToCart(cart, Object.assign({}, item, { quantity: this.state.quantity }))}>
+              <button onClick={() => addToCart(item.id, item.title, this.state.quantity, item.price)}>
                 Buy
               </button>
             </div>

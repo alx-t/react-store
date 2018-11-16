@@ -15,19 +15,19 @@ class Cart extends Component {
     e.preventDefault();
   }
 
-  handleDrop(e, cart, eventAddToCart) {
+  handleDrop(e, cart, addToCart) {
     const { id, title, price } = JSON.parse(e.dataTransfer.getData('item'));
-    eventAddToCart(cart, { id: id, title: title, quantity: 1, price: price });
+    addToCart(id, title, 1, price);
   }
 
   render() {
     return (
       <cartContext.Consumer>
         {
-          ({ cart, eventAddToCart }) => (
+          ({ cart, addToCart }) => (
             <div
                 onDragOver={this.handleDragOver}
-                onDrop={(e) => this.handleDrop(e, cart, eventAddToCart)}>
+                onDrop={(e) => this.handleDrop(e, cart, addToCart)}>
               <button className='btn'>
                 <img height="40" width="40" src={cartIcon}/>{cart.items.length}
               </button>

@@ -1,4 +1,4 @@
-class LineItem {
+export default class LineItem {
   constructor(id, title, quantity, price) {
     this._id = id;
     this._title = title;
@@ -13,5 +13,3 @@ class LineItem {
   get quantity() { return this._quantity; }
   get price() { return this._price; }
 }
-
-export default LineItem;
