@@ -25,7 +25,7 @@ export default class ProductCard extends Component {
     const product = this.props.product;
     const image = {
         alt: 'Oops, no image',
-        src: product.imageUrl,
+        src: product.imageUrls[0],
         width: 200,
         height: 150
       };
@@ -59,6 +59,6 @@ ProductCard.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    imageUrl: PropTypes.string.isRequired
+    imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired
   })
 };

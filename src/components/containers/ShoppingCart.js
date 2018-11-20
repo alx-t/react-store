@@ -45,7 +45,7 @@ class ShoppingCart extends Component {
 }
 
 ShoppingCart.propTypes = {
-  children: PropTypes.instanceOf(Component)
+  children: PropTypes.instanceOf(Object)
 };
 
 export default ShoppingCart;
