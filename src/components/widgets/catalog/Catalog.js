@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Card } from 'semantic-ui-react';
+
 import ProductCard from '~/src/components/widgets/catalog/ProductCard';
 import TextBox from '~/src/components/widgets/catalog/elements/TextBox';
-
-import styles from '~/src/components/widgets/catalog/Catalog.css';
 
 export default class Catalog extends Component {
   constructor(props) {
@@ -22,15 +22,13 @@ export default class Catalog extends Component {
     });
 
     return (
-      <div className='container'>
-        <div className='header'>
-          <h3>
-            <TextBox>Catalog</TextBox>
-          </h3>
-        </div>
-        <div className='content'>
+      <div>
+        <h3>
+          <TextBox>Catalog</TextBox>
+        </h3>
+        <Card.Group stackable centered >
           {productCards}
-        </div>
+        </Card.Group>
       </div>
     );
   }

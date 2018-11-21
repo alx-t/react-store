@@ -7,7 +7,7 @@ import { Menu } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 
 import {
-  mainPath, aboutPath, catalogPath, productPath
+  mainPath, aboutPath, catalogPath, productPath, cartPath
 } from '~/src/helpers/routes';
 import routes from '~/src/routes';
 
@@ -39,7 +39,7 @@ export default class App extends Component {
               <Menu.Item
                 name='main'
                 as={NavLink}
-                to={mainPath()}
+                exact to={mainPath()}
                 active={activeItem === 'main'}
                 onClick={this.handleItemClick}>Main
               </Menu.Item>
@@ -61,10 +61,10 @@ export default class App extends Component {
               </Menu.Item>
               <Menu.Menu position='right'>
                 <Menu.Item
-                  name='about'
+                  name='cart'
                   as={NavLink}
-                  to={aboutPath()}
-                  active={activeItem === 'about'}
+                  to={cartPath()}
+                  active={activeItem === 'cart'}
                   onClick={this.handleItemClick}><Cart />
                 </Menu.Item>
               </Menu.Menu>

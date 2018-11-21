@@ -1,4 +1,4 @@
-import AboutPage from '~/src/components/AboutPage';
+import AboutPage from '~/src/components/views/AboutPage';
 import { aboutPath } from '~/src/helpers/routes';
 
 export default {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { camelizeKeys } from 'humps';
 import request from 'superagent';
 
@@ -21,13 +22,6 @@ export default class CatalogPage extends Component {
 
   componentDidMount() {
     this.fetchProducts();
-  }
-
-  componentWillUnmount() {
-    this.ignoreLastFetch = true;
-  }
-
-  componentDidUpdate(prevProps) {
   }
 
   render() {

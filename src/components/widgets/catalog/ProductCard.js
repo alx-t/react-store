@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { NavLink } from 'react-router-dom';
+import { productPath } from '~/src/helpers/routes';
+
+import { Card } from 'semantic-ui-react';
+
 import TextBox from '~/src/components/widgets/catalog/elements/TextBox';
 import Price from '~/src/components/widgets/catalog/elements/Price';
 import Image from '~/src/components/widgets/catalog/elements/Image';
 import BuyButton from '~/src/components/widgets/catalog/elements/BuyButton';
 
-import styles from '~/src/components/widgets/catalog/ProductCard.css';
-
 export default class ProductCard extends Component {
   constructor(props) {
     super(props);
     this.state = { product: this.props.product }
-
     this.handleDragStart = this.handleDragStart.bind(this);
   }
 
@@ -30,26 +32,24 @@ export default class ProductCard extends Component {
         height: 150
       };
     return (
-      <div
-          className='card'
+      <Card
+          as={NavLink} to={productPath(product.id)}
           draggable='true'
           onDragStart={this.handleDragStart}>
-        <div className='card-header'>
-          <TextBox>{product.title}</TextBox>
-        </div>
-        <div className='card-main'>
-          <Image
-            alt={image.alt}
-            src={image.src}
-            width={image.width}
-            height={image.height}
-          />
-          <div className='main-description'>
-            <Price>{product.price}</Price>
-            <BuyButton item={product} />
-          </div>
-        </div>
-      </div>
+        <Image
+          alt={image.alt}
+          src={image.src}
+          width={image.width}
+          height={image.height}
+        />
+        <Card.Content>
+          <Card.Header>{product.title}</Card.Header>
+        </Card.Content>
+        <Card.Content extra>
+          <Price>{product.price}</Price>
+          <BuyButton item={product} />
+        </Card.Content>
+      </Card>
     );
   }
 }

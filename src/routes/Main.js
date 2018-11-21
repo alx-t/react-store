@@ -1,4 +1,4 @@
-import MainPage from '~/src/components/MainPage';
+import MainPage from '~/src/components/views/MainPage';
 import { mainPath } from '~/src/helpers/routes';
 
 export default {
