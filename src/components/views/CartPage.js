@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
+
+import { catalogPath } from '~/src/helpers/routes';
 
 import cartContext from '~/src/cartContext';
 
@@ -14,12 +17,22 @@ class CartPage extends Component {
   }
 
   renderCart(cart) {
-    return (
-      <div>
-        {this.renderItems(cart.items)}
-        <h4>Total: {cart.total}</h4>
-      </div>
-    );
+    let result;
+    if (cart.items.length > 0) {
+      result = (
+        <div>
+          <h3>Cart Page</h3>
+          {this.renderItems(cart.items)}
+          <h4>Total: {cart.total}</h4>
+        </div>
+      );
+    } else {
+      result = (<Redirect to={{
+        pathname: catalogPath(),
+        state: { message: 'Cart is empty' }
+      }} />);
+    }
+    return result;
   }
 
   render() {
@@ -27,10 +40,7 @@ class CartPage extends Component {
       <cartContext.Consumer>
         {
           ({ cart }) => (
-            <div>
-              <h3>Cart Page</h3>
-              {this.renderCart(cart)}
-            </div>
+            this.renderCart(cart)
           )
         }
       </cartContext.Consumer>
