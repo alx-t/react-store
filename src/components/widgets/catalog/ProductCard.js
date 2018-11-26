@@ -14,13 +14,11 @@ import BuyButton from '~/src/components/widgets/catalog/elements/BuyButton';
 export default class ProductCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { product: this.props.product }
     this.handleDragStart = this.handleDragStart.bind(this);
   }
 
   handleDragStart(e) {
-    const product = this.state.product;
-    e.dataTransfer.setData('item', JSON.stringify(product));
+    e.dataTransfer.setData('item', JSON.stringify(this.props.product));
   }
 
   render() {
