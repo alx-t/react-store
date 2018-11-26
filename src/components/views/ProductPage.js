@@ -10,18 +10,16 @@ class ProductPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.id,
       product: null
     };
   }
 
   fetchProducts() {
-    const url = `http://localhost:3000/products/${this.state.id}`;
+    const url = `http://localhost:3000/products/${this.props.id}`;
     request
       .get(url)
       .end((err, res) => (
           !err && this.setState((prevState) => ({
-            id: prevState.id,
             product: camelizeKeys((res || {}).body.product)
           }))
         ));
