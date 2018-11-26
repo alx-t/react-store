@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from "react-router-dom";
 
 import { Card, Message } from 'semantic-ui-react';
 
 import ProductCard from '~/src/components/widgets/catalog/ProductCard';
 import TextBox from '~/src/components/widgets/catalog/elements/TextBox';
 
-export default class Catalog extends Component {
+class Catalog extends Component {
   constructor(props) {
     super(props);
     this.state = { visible: true };
@@ -31,7 +32,8 @@ export default class Catalog extends Component {
   }
 
   render() {
-    const { products, state } = this.props;
+    const { products } = this.props;
+    const state = this.props.location.state;
     const productCards = products.map((product) => {
       return (
         <div key={product.id} className='card-container'>
@@ -58,3 +60,5 @@ Catalog.propTypes = {
   products: PropTypes.arrayOf(ProductCard.propTypes.product),
   state: PropTypes.object
 };
+
+export default withRouter(Catalog);

@@ -26,7 +26,7 @@ export default class CatalogPage extends Component {
 
   render() {
     return (
-      <Catalog products={this.state.products} state={this.props.location.state} />
+      <Catalog products={this.state.products} />
     );
   }
 }
