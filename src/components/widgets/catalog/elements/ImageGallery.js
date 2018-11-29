@@ -12,10 +12,10 @@ class ImageGallery extends Component {
     this.state = {
       selectedImage: 0
     };
-    this.imageSelect = this.imageSelect.bind(this);
+    this.onSelect = this.onSelect.bind(this);
   }
 
-  imageSelect(key) {
+  onSelect(key) {
     this.setState((prevState) => ({ selectedImage: key }));
   }
 
@@ -24,7 +24,7 @@ class ImageGallery extends Component {
     return (
       <div>
         <ImagePreview selectedUrl={imageUrls[this.state.selectedImage]} />
-        <ImageList imageUrls={imageUrls} selectedImage={this.state.selectedImage} imageSelect={this.imageSelect}/>
+        <ImageList imageUrls={imageUrls} selectedImage={this.state.selectedImage} onSelect={this.onSelect}/>
       </div>
     );
   }
