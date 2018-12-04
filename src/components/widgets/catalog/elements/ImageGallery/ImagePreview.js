@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Image } from 'semantic-ui-react';
+import { Image, Button } from 'semantic-ui-react';
 
 const ImagePreview = ({ selectedUrl }) => (
-  <Image src={selectedUrl} size='large' />
+  <Image style={{'left': '20%'}} src={selectedUrl} size='large' />
 );
 
 ImagePreview.propTypes = {

@@ -1,0 +1,46 @@
+.navButton {
+  position: absolute;
+  top: 46%;
+
+  border-right: 4px solid #888888;
+  border-bottom: 4px solid #888888;
+
+  cursor: pointer;
+}
+
+.navButton:hover {
+  border-color: #9f9f9f;
+}
+
+.navArrow {
+  position: relative;
+  overflow: hidden;
+
+  width: 20px;
+  height: 100px;
+}
+
+.leftArrow {
+  left: 6%;
+
+  width:40px;
+  height:40px;
+
+  -webkit-transform: rotate(135deg);
+  -webkit-transform: translateY(135);
+  -moz-transform: rotate(135deg);
+  -moz-transform: translateY(135);
+  -ms-transform: rotate(135deg);
+  -ms-transform: translateY(135);
+}
+
+.rightArrow {
+  right: 6%;
+
+  width:40px;
+  height:40px;
+
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+}
