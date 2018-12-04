@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { camelizeKeys } from 'humps';
 import request from 'superagent';
 
+import { host } from '~/src/constants/host';
+
 import ProductDetail from './ProductDetail';
 
 class ProductPage extends Component {
@@ -15,7 +17,7 @@ class ProductPage extends Component {
   }
 
   fetchProducts() {
-    const url = `http://localhost:3000/products/${this.props.id}`;
+    const url = `${host}${this.props.id}`;
     request
       .get(url)
       .end((err, res) => (

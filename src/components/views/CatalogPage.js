@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { camelizeKeys } from 'humps';
 import request from 'superagent';
 
-import Catalog from '~src/components/widgets/catalog/Catalog';
+import { host } from '~/src/constants/host';
+
+import Catalog from '~/src/components/widgets/catalog/Catalog';
 
 export default class CatalogPage extends Component {
   constructor(props) {
@@ -12,9 +14,8 @@ export default class CatalogPage extends Component {
   }
 
   fetchProducts() {
-    const url = 'http://localhost:3000/products';
     request
-      .get(url)
+      .get(host)
       .end((err, res) => (
           !err && this.setState({ products: camelizeKeys((res || {}).body.products) })
     ));
