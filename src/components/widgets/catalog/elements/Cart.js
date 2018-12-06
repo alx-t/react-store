@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import cartContext from '~/src/cartContext';
+import { connect } from 'react-redux';
+import { addItem } from '~/src/actions/Cart';
 
 import styles from './Cart.css';
 import cartIcon from '~/src/images/cart.png';
@@ -15,28 +16,30 @@ class Cart extends Component {
     e.preventDefault();
   }
 
-  handleDrop(e, cart, addToCart) {
+  handleDrop(e) {
     const { id, title, price } = JSON.parse(e.dataTransfer.getData('item'));
-    addToCart(id, title, 1, price);
+    this.props.addItem({ 'id': id, 'title': title, 'quantity': 1, 'price': price });
   }
 
   render() {
     return (
-      <cartContext.Consumer>
-        {
-          ({ cart, addToCart }) => (
-            <div
-                onDragOver={this.handleDragOver}
-                onDrop={(e) => this.handleDrop(e, cart, addToCart)}>
-              <button className='btn'>
-                <img height="40" width="40" src={cartIcon}/>{cart.items.length}
-              </button>
-            </div>
-          )
-        }
-      </cartContext.Consumer>
+      <div
+        onDragOver={this.handleDragOver}
+        onDrop={(e) => this.handleDrop(e)}>
+      <button className='btn'>
+        <img height="40" width="40" src={cartIcon}/>{this.props.items.length}
+      </button>
+    </div>
     );
   }
 }
 
-export default Cart;
+const actionsToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item))
+});
+
+const stateToProps = (state) => ({
+  items: state.cart.entries
+})
+
+export default connect(stateToProps, actionsToProps)(Cart);

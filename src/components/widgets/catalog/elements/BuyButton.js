@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import cartContext from '~/src/cartContext';
+import { connect } from 'react-redux'
+import { addItem } from '~/src/actions/Cart';
 
 class BuyButton extends Component {
   constructor(props) {
@@ -16,23 +17,19 @@ class BuyButton extends Component {
   }
 
   render()  {
-    const item = this.props.item;
+    const { item, addItem } = this.props;
     return (
-      <cartContext.Consumer>
-        {
-          ({ cart, addToCart }) => (
-            <div>
-              <input
-                onChange={(e) => this.setField(e)}
-                value={this.state.quantity}
-              />
-              <button onClick={() => addToCart(item.id, item.title, this.state.quantity, item.price)}>
-                Buy
-              </button>
-            </div>
-          )
-        }
-      </cartContext.Consumer>
+      <div>
+        <input
+          onChange={(e) => this.setField(e)}
+          value={this.state.quantity}
+        />
+        <button onClick={() => addItem({
+            'id': item.id, 'title': item.title, 'quantity': this.state.quantity, 'price': item.price
+        })}>
+          Buy
+        </button>
+      </div>
     );
   }
 }
@@ -45,4 +42,13 @@ BuyButton.propTypes = {
   }).isRequired
 };
 
-export default BuyButton;
+const actionsToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item))
+});
+
+const stateToProps = (state) => ({
+  items: state.cart.entries,
+  total: state.cart.total
+});
+
+export default connect(stateToProps, actionsToProps)(BuyButton);

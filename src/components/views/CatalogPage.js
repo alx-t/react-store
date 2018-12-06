@@ -1,33 +1,31 @@
 import React, { Component } from 'react';
 
-import { camelizeKeys } from 'humps';
-import request from 'superagent';
-
-import { host } from '~/src/constants/host';
+import { connect } from 'react-redux'
+import { fetchProducts } from '~/src/actions/Products';
 
 import Catalog from '~/src/components/widgets/catalog/Catalog';
 
-export default class CatalogPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { products: [] }
-  }
-
-  fetchProducts() {
-    request
-      .get(host)
-      .end((err, res) => (
-          !err && this.setState({ products: camelizeKeys((res || {}).body.products) })
-    ));
-  }
-
+class CatalogPage extends Component {
   componentDidMount() {
-    this.fetchProducts();
+    const { fetchProducts } = this.props;
+    fetchProducts();
   }
 
   render() {
     return (
-      <Catalog products={this.state.products} />
+      <Catalog products={this.props.items} />
     );
   }
 }
+
+const actionsToProps = (dispatch) => ({
+  fetchProducts: () => dispatch(fetchProducts())
+});
+
+const stateToProps = (state) => ({
+  items: state.products.entries,
+  isFetching: state.products.isFetching,
+  error: state.products.error
+})
+
+export default connect(stateToProps, actionsToProps)(CatalogPage);
