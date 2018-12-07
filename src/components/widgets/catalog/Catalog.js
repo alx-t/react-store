@@ -32,8 +32,7 @@ class Catalog extends Component {
   }
 
   render() {
-    const { products } = this.props;
-    const state = this.props.location.state;
+    const { products, location } = this.props;
     const productCards = products.map((product) => {
       return (
         <div key={product.id} className='card-container'>
@@ -42,10 +41,10 @@ class Catalog extends Component {
       );
     });
 
-    if (this.state.visible && state && state.message) {
+    if (this.state.visible && location.state && location.state.message) {
       return (
         <div>
-          <Message onDismiss={this.handleDismiss} content={state.message} />
+          <Message onDismiss={this.handleDismiss} content={location.state.message} />
           {this.renderCatalog(productCards)}
         </div>
       )

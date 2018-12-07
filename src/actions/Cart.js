@@ -6,10 +6,3 @@ export function addItem(item) {
     item
   })
 }
-
-export function viewCart() {
-  return ({
-    type: types.VIEW_CART,
-    items
-  })
-}
