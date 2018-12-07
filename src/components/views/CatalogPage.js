@@ -6,11 +6,6 @@ import { fetchProducts } from '~/src/actions/Products';
 import Catalog from '~/src/components/widgets/catalog/Catalog';
 
 class CatalogPage extends Component {
-  componentDidMount() {
-    const { fetchProducts } = this.props;
-    fetchProducts();
-  }
-
   render() {
     return (
       <Catalog products={this.props.items} />

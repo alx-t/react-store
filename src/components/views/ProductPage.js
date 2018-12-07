@@ -7,11 +7,6 @@ import { fetchProduct } from '~/src/actions/Product';
 import ProductDetail from './ProductDetail';
 
 class ProductPage extends Component {
-  componentDidMount() {
-    const { fetchProduct } = this.props;
-    fetchProduct(this.props.id);
-  }
-
   render() {
     const product = (this.props.item) ? <ProductDetail {...this.props.item} />  : '';
     return (

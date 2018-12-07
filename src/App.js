@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router, Route, Switch, NavLink
+  Router, Route, Switch, NavLink, matchPath
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { parse } from 'qs';
+import prepareData from '~/src/helpers/prepareData';
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -13,6 +15,24 @@ import store from '~/src/store';
 
 import MenuBar from '~/src/components/widgets/MenuBar.js';
 
+import { createBrowserHistory } from 'history';
+let history = createBrowserHistory();
+
+history.listen((location, action = 'PUSS') => {
+  const state = { params: {}, query: {}, routes: [] };
+  routes.some((route) => {
+    const match = matchPath(location.pathname, route);
+    if (match) {
+      state.routes.push(route);
+      Object.assign(state.params, match.params);
+      Object.assign(state.query, parse(location.search.substr(1)));
+    }
+    return match;
+  });
+
+  prepareData(store, state);
+});
+
 const RouteWithSubroutes = (route, key) => (
   <Route key={key} {...route} />
 );
@@ -20,7 +40,7 @@ const RouteWithSubroutes = (route, key) => (
 const App = () => (
   <Provider store={store}>
     <div>
-      <Router>
+      <Router history={history}>
         <div>
           <MenuBar />
           <Switch>
