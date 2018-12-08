@@ -18,7 +18,7 @@ import MenuBar from '~/src/components/widgets/MenuBar.js';
 import { createBrowserHistory } from 'history';
 let history = createBrowserHistory();
 
-history.listen((location, action = 'PUSS') => {
+function historyCb(location, action = 'PUSS') {
   const state = { params: {}, query: {}, routes: [] };
   routes.some((route) => {
     const match = matchPath(location.pathname, route);
@@ -31,7 +31,10 @@ history.listen((location, action = 'PUSS') => {
   });
 
   prepareData(store, state);
-});
+};
+
+history.listen(historyCb);
+historyCb(window.location);
 
 const RouteWithSubroutes = (route, key) => (
   <Route key={key} {...route} />
