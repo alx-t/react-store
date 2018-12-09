@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Segment } from 'semantic-ui-react';
 
-import ImagePreview from './ImageGallery/ImagePreview';
-import ImageList from './ImageGallery/ImageList';
-import NavButtons from './ImageGallery/NavButtons';
+import ImagePreview from './ImagePreview';
+import ImageList from './ImageList';
+import NavButtons from './NavButtons';
 
 class ImageGallery extends Component {
   constructor(props) {

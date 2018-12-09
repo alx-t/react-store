@@ -6,10 +6,10 @@ import { productPath } from '~/src/helpers/routes';
 
 import { Card } from 'semantic-ui-react';
 
-import TextBox from '~/src/components/widgets/catalog/elements/TextBox';
-import Price from '~/src/components/widgets/catalog/elements/Price';
-import Image from '~/src/components/widgets/catalog/elements/Image';
-import BuyButton from '~/src/components/widgets/catalog/elements/BuyButton';
+import TextBox from '~/src/components/widgets/common/TextBox';
+import Price from '~/src/components/widgets/common/Price';
+import Image from '~/src/components/widgets/common/Image';
+import BuyButton from '~/src/components/widgets/common/BuyButton';
 
 export default class ProductCard extends Component {
   constructor(props) {

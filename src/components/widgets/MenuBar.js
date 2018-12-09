@@ -7,7 +7,7 @@ import {
   mainPath, aboutPath, catalogPath, productPath, cartPath
 } from '~/src/helpers/routes';
 
-import Cart from '~/src/components/widgets/catalog/elements/Cart';
+import Cart from '~/src/components/widgets/common/Cart';
 
 class MenuBar extends Component {
   render () {

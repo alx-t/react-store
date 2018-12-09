@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import styles from './Cart.css';
-import cartIcon from '~/src/images/cart.png';
+import cartIcon from './cart.png';
 
 export default class Cart extends Component {
   constructor(props) {

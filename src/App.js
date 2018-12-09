@@ -1,37 +1,18 @@
 import React, { Component } from 'react';
 import {
-  Router, Route, Switch, NavLink, matchPath
+  Router, Route, Switch, NavLink
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { parse } from 'qs';
-import prepareData from '~/src/helpers/prepareData';
 
 import 'semantic-ui-css/semantic.min.css';
 
 import DevTools from '~/src/containers/DevTools';
 
+import { history, historyCb } from '~/src/helpers/history';
 import routes from '~/src/routes';
 import store from '~/src/store';
 
 import MenuBar from '~/src/components/widgets/MenuBar.js';
-
-import { createBrowserHistory } from 'history';
-let history = createBrowserHistory();
-
-function historyCb(location, action = 'PUSS') {
-  const state = { params: {}, query: {}, routes: [] };
-  routes.some((route) => {
-    const match = matchPath(location.pathname, route);
-    if (match) {
-      state.routes.push(route);
-      Object.assign(state.params, match.params);
-      Object.assign(state.query, parse(location.search.substr(1)));
-    }
-    return match;
-  });
-
-  prepareData(store, state);
-};
 
 history.listen(historyCb);
 historyCb(window.location);

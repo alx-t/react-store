@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import { fetchProducts } from '~/src/actions/Products';
 
-import Catalog from '~/src/components/widgets/catalog/Catalog';
+import Catalog from './Catalog';
 
 class CatalogPage extends Component {
   render() {
@@ -13,14 +12,10 @@ class CatalogPage extends Component {
   }
 }
 
-const actionsToProps = (dispatch) => ({
-  fetchProducts: () => dispatch(fetchProducts())
-});
-
 const stateToProps = (state) => ({
   items: state.products.entries,
   isFetching: state.products.isFetching,
   error: state.products.error
 })
 
-export default connect(stateToProps, actionsToProps)(CatalogPage);
+export default connect(stateToProps)(CatalogPage);

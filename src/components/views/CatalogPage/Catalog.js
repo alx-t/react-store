@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 
 import { Card, Message } from 'semantic-ui-react';
 
-import ProductCard from '~/src/components/widgets/catalog/ProductCard';
-import TextBox from '~/src/components/widgets/catalog/elements/TextBox';
+import ProductCard from './ProductCard';
+import TextBox from '~/src/components/widgets/common/TextBox';
 
 class Catalog extends Component {
   constructor(props) {
