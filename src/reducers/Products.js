@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
     case types.FETCH_PRODUCTS_REQUEST:
       return Object.assign({}, initialState, { isFetching: true });
     case types.FETCH_PRODUCTS_SUCCESS:
-      return Object.assign({}, initialState, { entries: action.response });
+      return Object.assign({}, initialState, { entries: action.response.products });
     case types.FETCH_PRODUCTS_FAILURE:
       return Object.assign({}, initialState, { error: true });
     default:
