@@ -1,4 +1,5 @@
 import * as types from '~/src/constants/actionTypes/cart';
+import { loadCart, clearCart } from '~/src/helpers/persistenceHelper';
 
 class LineItem {
   constructor(id, title, quantity, price) {
@@ -17,18 +18,18 @@ class LineItem {
 }
 
 const initialState = {
-  entries: [],
+  entries: loadCart(),
   total: 0
 };
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case types.ADD_PRODUCT:
+    case types.CART_ADD_PRODUCT:
       const { id, title, quantity, price } = action.item
       const li = new LineItem(id, title, quantity, price);
       return Object.assign({}, initialState, { entries: state.entries.concat(li), total: state.total + li.total });
-    case types.VIEW_CART:
-      return Object.assign({}, initialState, { entries: state.entries });
+    case types.CART_CLEAR:
+      return Object.assign({}, initialState);
     default:
       return state;
   }
