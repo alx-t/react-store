@@ -1,41 +1,50 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux';
 
-import cartContext from '~/src/cartContext';
+import { catalogPath } from '~/src/helpers/routes';
 
 class CartPage extends Component {
   renderItems(items) {
     return (
       <ul>
         {items.map((item, key) => (
-          <li key={key}>{item.title} >>> {item.quantity} * {item.price} >>> {item.total}</li>)
+          <li key={key}>{item.title} >>> {item.quantity} * {item.price} >>> {item.total} </li>)
         )}
       </ul>
     );
   }
 
-  renderCart(cart) {
-    return (
-      <div>
-        {this.renderItems(cart.items)}
-        <h4>Total: {cart.total}</h4>
-      </div>
-    );
+  renderCart() {
+    const { items, total } = this.props;
+    let result;
+    if (items.length > 0) {
+      result = (
+        <div>
+          <h3>Cart Page</h3>
+          {this.renderItems(items)}
+          <h4>Total: {total}</h4>
+        </div>
+      );
+    } else {
+      result = (<Redirect to={{
+        pathname: catalogPath(),
+        state: { message: 'Cart is empty' }
+      }} />);
+    }
+    return result;
   }
 
   render() {
     return (
-      <cartContext.Consumer>
-        {
-          ({ cart }) => (
-            <div>
-              <h3>Cart Page</h3>
-              {this.renderCart(cart)}
-            </div>
-          )
-        }
-      </cartContext.Consumer>
+      this.renderCart()
     );
   }
 }
 
-export default CartPage;
+const stateToProps = (state) => ({
+  items: state.cart.entries,
+  total: state.cart.total
+});
+
+export default connect(stateToProps)(CartPage);
