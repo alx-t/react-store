@@ -1,10 +1,15 @@
 import * as types from '~/src/constants/actionTypes/cart';
-import { addItemToCart, clearCart } from '~/src/helpers/persistenceHelper';
+import { saveCart, restoreCart, clearCart } from '~/src/helpers/persistenceHelper';
 
 export default (store) => (next) => (action) => {
   switch(action.type) {
     case types.CART_ADD_PRODUCT:
-      addItemToCart(action.item);
+      next(action);
+      saveCart(store.getState().cart)
+      break;
+    case types.CART_RESTORE:
+      const cart = restoreCart();
+      action.cart = cart;
       next(action);
       break;
     case types.CART_CLEAR:

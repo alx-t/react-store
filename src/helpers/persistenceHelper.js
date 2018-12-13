@@ -1,17 +1,17 @@
-export const loadCart = () => {
+export const restoreCart = () => {
+  const empty = { entries: [], total: 0 };
   try {
     const serializedCart = localStorage.getItem('cart');
     if (serializedCart == null)
-      return [];
+      return empty;
     return JSON.parse(serializedCart);
   } catch (e) {
-    return [];
+    return empty;
   }
 };
 
-export const addItemToCart = (item) => {
+export const saveCart = (cart) => {
   try {
-    const cart = loadCart().concat(item);
     const serializedCart = JSON.stringify(cart);
     localStorage.setItem('cart', serializedCart);
   } catch (e) {}

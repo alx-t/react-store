@@ -12,3 +12,9 @@ export function clearCart() {
     type: types.CART_CLEAR
   })
 }
+
+export function restoreCart() {
+  return ({
+    type: types.CART_RESTORE,
+  })
+}
