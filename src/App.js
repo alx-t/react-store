@@ -19,32 +19,26 @@ import MenuBar from '~/src/components/widgets/MenuBar.js';
 history.listen(historyCb);
 historyCb(window.location);
 
+store.dispatch(restoreCart());
+
 const RouteWithSubroutes = (route, key) => (
   <Route key={key} {...route} />
 );
 
-class App extends Component {
-  componentDidMount() {
-    store.dispatch(restoreCart());
-  }
-
-  render() {
-    return (
-      <Provider store={store}>
+const App = () => (
+  <Provider store={store}>
+    <div>
+      <Router history={history}>
         <div>
-          <Router history={history}>
-            <div>
-              <MenuBar />
-              <Switch>
-                {routes.map((route, key) => RouteWithSubroutes(route, key))}
-              </Switch>
-            </div>
-          </Router>
-          <DevTools />
+          <MenuBar />
+          <Switch>
+            {routes.map((route, key) => RouteWithSubroutes(route, key))}
+          </Switch>
         </div>
-      </Provider>
-    );
-  }
-}
+      </Router>
+      <DevTools />
+    </div>
+  </Provider>
+);
 
 export default App;
