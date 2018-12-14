@@ -12,7 +12,8 @@ import { history, historyCb } from '~/src/helpers/history';
 import routes from '~/src/routes';
 import store from '~/src/store';
 
-import AppLoader from '~/src/containers/AppLoader';
+import { restoreCart } from '~/src/actions/Cart';
+
 import MenuBar from '~/src/components/widgets/MenuBar.js';
 
 history.listen(historyCb);
@@ -22,20 +23,28 @@ const RouteWithSubroutes = (route, key) => (
   <Route key={key} {...route} />
 );
 
-const App = () => (
-  <Provider store={store}>
-    <AppLoader>
-      <Router history={history}>
+class App extends Component {
+  componentDidMount() {
+    store.dispatch(restoreCart());
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
         <div>
-          <MenuBar />
-          <Switch>
-            {routes.map((route, key) => RouteWithSubroutes(route, key))}
-          </Switch>
+          <Router history={history}>
+            <div>
+              <MenuBar />
+              <Switch>
+                {routes.map((route, key) => RouteWithSubroutes(route, key))}
+              </Switch>
+            </div>
+          </Router>
+          <DevTools />
         </div>
-      </Router>
-      <DevTools />
-    </AppLoader>
-  </Provider>
-);
+      </Provider>
+    );
+  }
+}
 
 export default App;
