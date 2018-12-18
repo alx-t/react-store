@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import { catalogPath } from '~/src/helpers/routes';
+import { clearCart } from '~/src/actions/Cart';
 
 class CartPage extends Component {
   renderItems(items) {
@@ -24,6 +25,7 @@ class CartPage extends Component {
           <h3>Cart Page</h3>
           {this.renderItems(items)}
           <h4>Total: {total}</h4>
+          <button onClick={() => this.props.clearCart()}>Clear</button>
         </div>
       );
     } else {
@@ -42,9 +44,13 @@ class CartPage extends Component {
   }
 }
 
+const actionsToProps = (dispatch) => ({
+  clearCart: () => dispatch(clearCart())
+});
+
 const stateToProps = (state) => ({
   items: state.cart.entries,
   total: state.cart.total
 });
 
-export default connect(stateToProps)(CartPage);
+export default connect(stateToProps, actionsToProps)(CartPage);

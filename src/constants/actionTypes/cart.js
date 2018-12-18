@@ -1,2 +1,3 @@
-export const ADD_PRODUCT = 'ADD_PRODUCT';
-export const VIEW_CART = 'VIEW_CART';
+export const CART_ADD_PRODUCT = 'CART_ADD_PRODUCT';
+export const CART_CLEAR = 'CART_CLEAR';
+export const CART_RESTORE = 'CART_RESTORE';

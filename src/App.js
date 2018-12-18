@@ -12,10 +12,14 @@ import { history, historyCb } from '~/src/helpers/history';
 import routes from '~/src/routes';
 import store from '~/src/store';
 
+import { restoreCart } from '~/src/actions/Cart';
+
 import MenuBar from '~/src/components/widgets/MenuBar.js';
 
 history.listen(historyCb);
 historyCb(window.location);
+
+store.dispatch(restoreCart());
 
 const RouteWithSubroutes = (route, key) => (
   <Route key={key} {...route} />
