@@ -5,7 +5,7 @@ import { API_CALL } from '~/src/middleware/API';
 export function fetchProduct(id) {
   return {
     [API_CALL]: {
-      endpoint: `/${id}`,
+      endpoint: `/products/${id}`,
       method: 'GET',
       query: {},
       types: [

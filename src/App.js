@@ -15,6 +15,7 @@ import store from '~/src/store';
 import { restoreCart } from '~/src/actions/Cart';
 
 import MenuBar from '~/src/components/widgets/MenuBar.js';
+import Layout from '~/src/components/Layout.js';
 
 history.listen(historyCb);
 historyCb(window.location);
@@ -31,9 +32,11 @@ const App = () => (
       <Router history={history}>
         <div>
           <MenuBar />
-          <Switch>
+          <Layout>
+            <Switch>
             {routes.map((route, key) => RouteWithSubroutes(route, key))}
-          </Switch>
+            </Switch>
+          </Layout>
         </div>
       </Router>
       <DevTools />

@@ -2,20 +2,15 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-import { catalogPath } from '~/src/helpers/routes';
+import { Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react'
+
+import { catalogPath, orderPath } from '~/src/helpers/routes';
 import { clearCart } from '~/src/actions/Cart';
 
-class CartPage extends Component {
-  renderItems(items) {
-    return (
-      <ul>
-        {items.map((item, key) => (
-          <li key={key}>{item.title} >>> {item.quantity} * {item.price} >>> {item.total} </li>)
-        )}
-      </ul>
-    );
-  }
+import CartDetail from '~/src/components/widgets/common/CartDetail';
 
+class CartPage extends Component {
   renderCart() {
     const { items, total } = this.props;
     let result;
@@ -23,9 +18,9 @@ class CartPage extends Component {
       result = (
         <div>
           <h3>Cart Page</h3>
-          {this.renderItems(items)}
-          <h4>Total: {total}</h4>
-          <button onClick={() => this.props.clearCart()}>Clear</button>
+          <CartDetail items={items} total={total} />
+          <Button onClick={() => this.props.clearCart()}>Clear</Button>
+          <Button as={Link} to={orderPath()}>Order</Button>
         </div>
       );
     } else {
