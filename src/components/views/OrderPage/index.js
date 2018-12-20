@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import { sendOrder } from '~/src/actions/Order';
+import { catalogPath } from '~/src/helpers/routes';
+import { history } from '~/src/helpers/history';
+
 import Order from './Order';
 
 const validate = (values) => {
@@ -34,5 +37,13 @@ const stateToProps = (state) => ({
 export default connect(stateToProps)(reduxForm({
   form: 'orderForm',
   validate,
-  onSubmit: (values, dispatch) => dispatch(sendOrder(values))
+  onSubmit: (values, dispatch) => {
+    dispatch(sendOrder(values)).then(
+      (response) => history.push({
+        pathname: catalogPath(),
+        state: { message: 'Order created!' }
+      }),
+      (error) => console.log('error')
+    )
+  }
 })(Order));

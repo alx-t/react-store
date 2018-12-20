@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom'
 import { Field } from 'redux-form';
 import classNames from 'classnames';
 
-import { catalogPath } from '~/src/helpers/routes';
 import CartDetail from '~/src/components/widgets/common/CartDetail';
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
@@ -31,10 +29,6 @@ class Order extends Component {
         <br/>
         <h3>Customer</h3>
         {isError && (<div className='ui red label'>Error sending Order</div>)}
-        {isSuccess && (<Redirect to={{
-          pathname: catalogPath(),
-          state: { message: 'Order created!' }
-        }} />)}
         <form onSubmit={handleSubmit} className='ui form'>
           <Field label='Full name' component={renderField} type='text' name='fullName' />
           <Field label='Phone' component={renderField} type='text' name='phone' />

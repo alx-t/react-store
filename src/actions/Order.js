@@ -6,7 +6,7 @@ export function sendOrder(order) {
     [API_CALL]: {
       endpoint: '/orders',
       method: 'POST',
-      query: {order: order},
+      query: { order },
       types: [
         types.ORDER_SEND_REQUEST,
         types.ORDER_SEND_SUCCESS,
