@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import { reduxForm, SubmissionError } from 'redux-form';
 
 import { sendOrder } from '~/src/actions/Order';
 import { catalogPath } from '~/src/helpers/routes';
@@ -27,7 +27,7 @@ const stateToProps = (state) => ({
   items: state.cart.entries,
   total: state.cart.total,
   isError: state.order.isError,
-  isSuccess: state.order.isSuccess,
+  errorMessage: state.order.errorMessage,
   initialValues: {
     items: state.cart.entries,
     total: state.cart.total
@@ -38,12 +38,17 @@ export default connect(stateToProps)(reduxForm({
   form: 'orderForm',
   validate,
   onSubmit: (values, dispatch) => {
-    dispatch(sendOrder(values)).then(
-      (response) => history.push({
-        pathname: catalogPath(),
-        state: { message: 'Order created!' }
-      }),
-      (error) => console.log('error')
-    )
+    dispatch(sendOrder(values))
+      .then(
+        (response) => history.push({
+          pathname: catalogPath(),
+          state: { message: 'Order created!' }
+        }),
+        (error) => {
+          throw new SubmissionError({ message: 'Send Order failed!' });
+        })
+      .catch(
+        submissionError => console.log(submissionError)
+      )
   }
 })(Order));

@@ -21,14 +21,14 @@ class Order extends Component {
   }
 
   render() {
-    const { items, total, isError, isSuccess, handleSubmit } = this.props;
+    const { items, total, isError, errorMessage, handleSubmit } = this.props;
     return (
       <div>
         <h3>Order Page</h3>
         <CartDetail items={items} total={total} />
         <br/>
         <h3>Customer</h3>
-        {isError && (<div className='ui red label'>Error sending Order</div>)}
+        {isError && (<div className='ui red label'>Error sending Order: {errorMessage}</div>)}
         <form onSubmit={handleSubmit} className='ui form'>
           <Field label='Full name' component={renderField} type='text' name='fullName' />
           <Field label='Phone' component={renderField} type='text' name='phone' />
@@ -45,7 +45,7 @@ Order.propTypes = {
   items: PropTypes.arrayOf(Object).isRequired,
   total: PropTypes.number.isRequired,
   isError: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
 };
 

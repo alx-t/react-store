@@ -13,7 +13,7 @@ const initialState = {
   },
   isFetching: false,
   isError: false,
-  isSuccess: false,
+  errorMessage: ''
 };
 
 export default function(state = initialState, action) {
@@ -21,9 +21,9 @@ export default function(state = initialState, action) {
     case types.ORDER_SEND_REQUEST:
       return Object.assign({}, initialState, { isFetching: true });
     case types.ORDER_SEND_SUCCESS:
-      return Object.assign({}, initialState, { isError: false, isSuccess: true });
+      return Object.assign({}, initialState, { isError: false });
     case types.ORDER_SEND_FAILURE:
-      return Object.assign({}, initialState, { isError: true, isSuccess: false });
+      return Object.assign({}, initialState, { isError: true, errorMessage: action.error.message });
     default:
       return state;
   }
