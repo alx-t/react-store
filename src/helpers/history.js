@@ -4,8 +4,8 @@ import { matchPath } from 'react-router-dom';
 import { parse } from 'qs';
 
 import prepareData from './prepareData';
-import routes from '~/src/routes';
-import store from '~/src/store';
+import routes from 'routes';
+import store from 'store';
 
 export const history = createBrowserHistory();
 

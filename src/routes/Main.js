@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MainPage from '~/src/components/views/MainPage';
-import { mainPath } from '~/src/helpers/routes';
+import MainPage from 'components/views/MainPage';
+import { mainPath } from 'helpers/routes';
 
 export default {
   path: mainPath(),

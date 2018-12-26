@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react'
 
-import { catalogPath, orderPath } from '~/src/helpers/routes';
-import { clearCart } from '~/src/actions/Cart';
+import { catalogPath, orderPath } from 'helpers/routes';
+import { clearCart } from 'actions/Cart';
 
-import CartDetail from '~/src/components/widgets/common/CartDetail';
+import CartDetail from 'components/widgets/common/CartDetail';
 
 class CartPage extends Component {
   renderCart() {

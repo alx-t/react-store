@@ -4,7 +4,7 @@ import { pick } from 'lodash/object';
 import { stringify } from 'qs';
 import { camelizeKeys } from 'humps';
 
-import { host } from '~/src/constants/host';
+import { host } from 'constants/host';
 
 function APICall({ endpoint, method, query, payload }) {
   return new Promise((resolve, reject) => {

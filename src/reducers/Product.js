@@ -1,4 +1,4 @@
-import * as types from '~/src/constants/actionTypes/product';
+import * as types from 'constants/actionTypes/product';
 
 const initialState = {
   isFetching: false,

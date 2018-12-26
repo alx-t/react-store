@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import classNames from 'classnames';
 
-import CartDetail from '~/src/components/widgets/common/CartDetail';
+import CartDetail from 'components/widgets/common/CartDetail';
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
   <div className={classNames('ui field', { error })}>

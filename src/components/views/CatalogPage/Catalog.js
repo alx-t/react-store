@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Card, Message } from 'semantic-ui-react';
 
 import ProductCard from './ProductCard';
-import TextBox from '~/src/components/widgets/common/TextBox';
+import TextBox from 'components/widgets/common/TextBox';
 
 class Catalog extends Component {
   constructor(props) {

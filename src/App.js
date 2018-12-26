@@ -6,16 +6,16 @@ import { Provider } from 'react-redux';
 
 import 'semantic-ui-css/semantic.min.css';
 
-import DevTools from '~/src/containers/DevTools';
+import DevTools from 'containers/DevTools';
 
-import { history, historyCb } from '~/src/helpers/history';
-import routes from '~/src/routes';
-import store from '~/src/store';
+import { history, historyCb } from 'helpers/history';
+import routes from 'routes';
+import store from 'store';
 
-import { restoreCart } from '~/src/actions/Cart';
+import { restoreCart } from 'actions/Cart';
 
-import MenuBar from '~/src/components/widgets/MenuBar.js';
-import Layout from '~/src/components/Layout.js';
+import MenuBar from 'components/widgets/MenuBar.js';
+import Layout from 'components/Layout.js';
 
 history.listen(historyCb);
 historyCb(window.location);

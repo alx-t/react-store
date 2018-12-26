@@ -1,9 +1,9 @@
 import React from 'react';
 
-import ProductPage from '~/src/components/views/ProductPage';
-import { productPath } from '~/src/helpers/routes';
+import ProductPage from 'components/views/ProductPage';
+import { productPath } from 'helpers/routes';
 
-import { fetchProduct } from '~/src/actions/Product';
+import { fetchProduct } from 'actions/Product';
 
 export default {
   path: productPath(),

@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, SubmissionError } from 'redux-form';
 
-import { sendOrder } from '~/src/actions/Order';
-import { catalogPath } from '~/src/helpers/routes';
-import { history } from '~/src/helpers/history';
+import { sendOrder } from 'actions/Order';
+import { catalogPath } from 'helpers/routes';
+import { history } from 'helpers/history';
 
 import Order from './Order';
 

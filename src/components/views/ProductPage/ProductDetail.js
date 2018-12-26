@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Image from '~/src/components/widgets/common/Image';
-import Price from '~/src/components/widgets/common/Price';
-import ImageGallery from '~/src/components/views/ProductPage/widgets/ImageGallery';
+import Image from 'components/widgets/common/Image';
+import Price from 'components/widgets/common/Price';
+import ImageGallery from 'components/views/ProductPage/widgets/ImageGallery';
 
 const ProductDetail = ({ id, title, imageUrls, price }) => (
   <div>
