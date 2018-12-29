@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
+import Helmet from 'react-helmet';
+
 import { Card, Message } from 'semantic-ui-react';
 
 import ProductCard from './ProductCard';
@@ -21,6 +23,9 @@ class Catalog extends Component {
   renderCatalog(productCards) {
     return (
       <div>
+        <Helmet>
+          <title>Cats products</title>
+        </Helmet>
         <h3>
           <TextBox>Catalog</TextBox>
         </h3>

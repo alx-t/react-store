@@ -2,6 +2,8 @@ import React from 'react';
 
 import { set } from 'lodash/object';
 
+import Helmet from 'react-helmet';
+
 import Field from './Field';
 import FieldArea from './FieldArea';
 
@@ -57,6 +59,9 @@ class AboutPage extends React.Component {
     const { fullName, email, message } = this.state.form.values;
     return (
       <div>
+        <Helmet>
+          <title>About page</title>
+        </Helmet>
         <h3>About page</h3>
         <h4>Contacts</h4>
         <form onSubmit={this.onSubmit} className='ui form'>

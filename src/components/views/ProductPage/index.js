@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux'
 
+import Helmet from 'react-helmet';
+
 import ProductDetail from './ProductDetail';
 
 class ProductPage extends Component {
@@ -10,6 +12,9 @@ class ProductPage extends Component {
     const product = (this.props.item) ? <ProductDetail {...this.props.item} />  : '';
     return (
       <div>
+        <Helmet>
+          <title>{this.props.item && this.props.item.title}</title>
+        </Helmet>
         {product}
       </div>
     )

@@ -25,6 +25,7 @@ app.get(
           'index',
           {
             content: result.content,
+            helmet: result.helmet,
             manifest,
             initialState: JSON.stringify(result.initialState)
           });
