@@ -49,6 +49,7 @@
     "ignore-loader": "^0.1.2",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
+    "pm2": "^3.2.4",
     "prop-types": "^15.6.2",
     "redux-devtools": "^3.4.2",
     "redux-devtools-dock-monitor": "^1.1.3",
