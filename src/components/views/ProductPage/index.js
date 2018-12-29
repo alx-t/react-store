@@ -14,6 +14,8 @@ class ProductPage extends Component {
       <div>
         <Helmet>
           <title>{this.props.item && this.props.item.title}</title>
+          <meta name="description" content="Thinknetica React Stor" />
+          <meta name="keywords" content="Thinknetica React Stor" />
         </Helmet>
         {product}
       </div>

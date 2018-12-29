@@ -61,6 +61,8 @@ class AboutPage extends React.Component {
       <div>
         <Helmet>
           <title>About page</title>
+          <meta name="description" content="Thinknetica React Stor" />
+          <meta name="keywords" content="Thinknetica React Stor" />
         </Helmet>
         <h3>About page</h3>
         <h4>Contacts</h4>

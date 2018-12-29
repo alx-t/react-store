@@ -25,6 +25,8 @@ class Catalog extends Component {
       <div>
         <Helmet>
           <title>Cats products</title>
+          <meta name="description" content="Thinknetica React Stor" />
+          <meta name="keywords" content="Thinknetica React Stor" />
         </Helmet>
         <h3>
           <TextBox>Catalog</TextBox>
