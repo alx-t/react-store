@@ -13,7 +13,9 @@ module.exports = merge(common, {
   entry: path.resolve(process.cwd(), 'initializers', 'server', 'index.js'),
 
   externals: [
-    nodeExternals()
+    nodeExternals({
+      whitelist: [/(.*).css$/]
+    })
   ],
 
   output: {

@@ -3,19 +3,22 @@ import { renderToString } from 'react-dom/server';
 
 import App from 'App';
 
-import routes from 'routes';
+import routes from '../../src/routes';
 import createStore from 'store';
 import { historyCb } from 'helpers/history';
 
+import Helmet from 'react-helmet';
+
 export default (req, res) => {
   const store = createStore();
-  
-  return historyCb(store, routes, { pathname: req.url, query: req.query })
+
+  historyCb(store, routes, { pathname: req.url, query: req.query })
     .then(() => {
       const context = {};
       return {
         content: renderToString(<App store={store} location={req.url} context={context} />),
-        initialState: store.getState()
+        initialState: store.getState(),
+        helmet: Helmet.renderStatic()
       };
     });
 };
