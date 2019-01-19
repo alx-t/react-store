@@ -9,7 +9,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 import DevTools from 'containers/DevTools';
 
-import routes from 'routes';
+import routes from '../src/routes';
 
 import MenuBar from 'components/widgets/MenuBar.js';
 import Layout from 'components/Layout.js';

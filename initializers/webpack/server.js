@@ -12,6 +12,8 @@ module.exports = merge(common, {
 
   entry: path.resolve(process.cwd(), 'initializers', 'server', 'index.js'),
 
+  devtool: 'source-map',
+
   externals: [
     nodeExternals({
       whitelist: [/(.*).css$/]

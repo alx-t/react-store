@@ -12,8 +12,8 @@ import Helmet from 'react-helmet';
 export default (req, res) => {
   const store = createStore();
 
-  historyCb(store, routes, { pathname: req.url, query: req.query })
-    .then(() => {
+  return historyCb(store, routes, { pathname: req.url, query: req.query })
+    .then((result) => {
       const context = {};
       return {
         content: renderToString(<App store={store} location={req.url} context={context} />),
