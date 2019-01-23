@@ -12,6 +12,9 @@ import Helmet from 'react-helmet';
 export default (req, res) => {
   const store = createStore();
 
+  console.log('====== init state');
+  console.log(store.getState());
+
   return historyCb(store, routes, { pathname: req.url, query: req.query })
     .then((result) => {
       const context = {};

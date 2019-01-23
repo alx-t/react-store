@@ -8,8 +8,8 @@ import { fetchProducts } from 'actions/Products';
 export default {
   path: catalogPath(),
   component: CatalogPage,
-  prepareData: (store) => {
-    store.dispatch(fetchProducts());
+  prepareData: (store, query, params) => {
+    return store.dispatch(fetchProducts());
   },
   exact: true
 };
