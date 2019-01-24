@@ -29,10 +29,7 @@ const RouteWithSubroutes = (route, key) => (
   <Route key={key} {...route} />
 );
 
-const App = ({ history, store, location, context }) => {
-  console.log('==== APP');
-  console.log(store.getState());
-  return (
+const App = ({ history, store, location, context }) => (
   <Provider store={store}>
     <div>
       <AppRouter history={history} context={context} location={location}>
@@ -48,6 +45,6 @@ const App = ({ history, store, location, context }) => {
       <DevTools />
     </div>
   </Provider>
-);}
+);
 
 export default App;

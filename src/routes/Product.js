@@ -8,9 +8,6 @@ import { fetchProduct } from 'actions/Product';
 export default {
   path: productPath(),
   prepareData: (store, query, params) => {
-    // console.log('========= product');
-    // console.log(store.dispatch(fetchProduct(params.id)));
-    // console.log(store.getState());
     return store.dispatch(fetchProduct(params.id));
   },
   render: ({ match }) => (

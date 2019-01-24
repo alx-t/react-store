@@ -9,10 +9,7 @@ import ProductDetail from './ProductDetail';
 
 class ProductPage extends Component {
   render() {
-    console.log('==== prod page');
-    console.log(this.props);
     const product = (this.props.item) ? <ProductDetail {...this.props.item} />  : '';
-    // console.log(product);
     return (
       <div>
         <Helmet>
@@ -30,13 +27,10 @@ ProductPage.propTypes = {
   id: PropTypes.string.isRequired
 };
 
-const stateToProps = (state) => {
-  console.log('----- st2pr');
-  console.log(state);
-  return ({
+const stateToProps = (state) => ({
   item: state.product.entry,
   isFetching: state.product.isFetching,
   error: state.product.error
-});}
+})
 
 export default connect(stateToProps)(ProductPage);
