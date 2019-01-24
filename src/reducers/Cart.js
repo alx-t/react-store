@@ -1,4 +1,4 @@
-import * as types from '~/src/constants/actionTypes/cart';
+import * as types from 'constants/actionTypes/cart';
 
 import LineItem from './LineItem';
 

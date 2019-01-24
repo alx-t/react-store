@@ -1,4 +1,4 @@
-import * as types from '~/src/constants/actionTypes/order';
+import * as types from 'constants/actionTypes/order';
 
 import LineItem from './LineItem';
 

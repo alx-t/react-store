@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux'
-import { addItem } from '~/src/actions/Cart';
+import { addItem } from 'actions/Cart';
 
 class BuyButton extends Component {
   constructor(props) {

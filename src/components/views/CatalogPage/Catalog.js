@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
+import Helmet from 'react-helmet';
+
 import { Card, Message } from 'semantic-ui-react';
 
 import ProductCard from './ProductCard';
-import TextBox from '~/src/components/widgets/common/TextBox';
+import TextBox from 'components/widgets/common/TextBox';
 
 class Catalog extends Component {
   constructor(props) {
@@ -21,6 +23,11 @@ class Catalog extends Component {
   renderCatalog(productCards) {
     return (
       <div>
+        <Helmet>
+          <title>Cats products</title>
+          <meta name="description" content="Thinknetica React Stor" />
+          <meta name="keywords" content="Thinknetica React Stor" />
+        </Helmet>
         <h3>
           <TextBox>Catalog</TextBox>
         </h3>

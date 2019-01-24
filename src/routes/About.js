@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AboutPage from '~/src/components/views/AboutPage';
-import { aboutPath } from '~/src/helpers/routes';
+import AboutPage from 'components/views/AboutPage';
+import { aboutPath } from 'helpers/routes';
 
 export default {
   path: aboutPath(),

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { addItem } from '~/src/actions/Cart';
+import { addItem } from 'actions/Cart';
 import Cart from './Cart';
 
 const actionsToProps = (dispatch) => ({

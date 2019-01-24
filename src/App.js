@@ -1,35 +1,38 @@
+/* globals __CLIENT__, __SERVER__ */
 import React, { Component } from 'react';
 import {
-  Router, Route, Switch, NavLink
+  Router, StaticRouter, Route, Switch, NavLink
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import 'semantic-ui-css/semantic.min.css';
 
-import DevTools from '~/src/containers/DevTools';
+import DevTools from 'containers/DevTools';
 
-import { history, historyCb } from '~/src/helpers/history';
-import routes from '~/src/routes';
-import store from '~/src/store';
+import routes from '../src/routes';
 
-import { restoreCart } from '~/src/actions/Cart';
+import MenuBar from 'components/widgets/MenuBar.js';
+import Layout from 'components/Layout.js';
 
-import MenuBar from '~/src/components/widgets/MenuBar.js';
-import Layout from '~/src/components/Layout.js';
-
-history.listen(historyCb);
-historyCb(window.location);
-
-store.dispatch(restoreCart());
+const AppRouter = ({ history, children, location, context }) => {
+  if (__CLIENT__)
+    return (
+      <Router history={history}>{children}</Router>
+    );
+  if (__SERVER__)
+    return (
+      <StaticRouter location={location} context={context}>{children}</StaticRouter>
+    );
+}
 
 const RouteWithSubroutes = (route, key) => (
   <Route key={key} {...route} />
 );
 
-const App = () => (
+const App = ({ history, store, location, context }) => (
   <Provider store={store}>
     <div>
-      <Router history={history}>
+      <AppRouter history={history} context={context} location={location}>
         <div>
           <MenuBar />
           <Layout>
@@ -38,7 +41,7 @@ const App = () => (
             </Switch>
           </Layout>
         </div>
-      </Router>
+      </AppRouter>
       <DevTools />
     </div>
   </Provider>

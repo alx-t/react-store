@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="#">
+    <%- helmet.title.toString() %>
+  <link href="<%- manifest["main.css"] %>" rel="stylesheet"></head>
+  <body>
+    <div id="root"><%- content %></div>
+    <script>window.INITIAL_STATE = <%- initialState%>;</script>
+    <script src="<%- manifest["main.js"] %>"></script>
+  </body>
+</html>

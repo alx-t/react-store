@@ -5,9 +5,9 @@ import { Menu } from 'semantic-ui-react';
 
 import {
   mainPath, aboutPath, catalogPath, productPath, cartPath
-} from '~/src/helpers/routes';
+} from 'helpers/routes';
 
-import Cart from '~/src/components/widgets/common/Cart';
+import Cart from 'components/widgets/common/Cart';
 
 class MenuBar extends Component {
   render () {

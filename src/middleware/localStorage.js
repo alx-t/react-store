@@ -1,9 +1,9 @@
-import * as cartTypes from '~/src/constants/actionTypes/cart';
-import * as orderTypes from '~/src/constants/actionTypes/order';
+import * as cartTypes from 'constants/actionTypes/cart';
+import * as orderTypes from 'constants/actionTypes/order';
 
-import { restoreCart as actionRestoreCart } from '~/src/actions/Cart';
+import { restoreCart as actionRestoreCart } from 'actions/Cart';
 
-import { saveCart, restoreCart, clearCart } from '~/src/helpers/persistenceHelper';
+import { saveCart, restoreCart, clearCart } from 'helpers/persistenceHelper';
 
 export default (store) => (next) => (action) => {
   switch(action.type) {
